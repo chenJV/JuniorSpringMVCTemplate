@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haomostudio.JuniorSpringMVCTemplate.dao.DaoSupport">
+    <sql id="Base_Column_List">
+      ROW_ID, USER_CODE, USER_NAME, SEX, CREATION_BY, DELETED_FLAG
+    </sql>
+    <!--查询列表-->
+    <select id="selectByExample" parameterType="com.haomostudio.JuniorSpringMVCTemplate.po.UserInfo"
+            resultMap="com.haomostudio.JuniorSpringMVCTemplate.po.UserInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from USER_INFO
+    </select>
+    <!--创建列表-->
+    <insert id="insert" parameterType="com.haomostudio.JuniorSpringMVCTemplate.po.UserInfo">
+    insert into USER_INFO (row_id, user_code, user_name,
+      sex, creation_by,deleted_flag
+      )
+    values (#{rowId,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+      #{sex,jdbcType=TIMESTAMP}, #{creationby,jdbcType=TIMESTAMP}, #{deletedFlag,jdbcType=VARCHAR})
+  </insert>
+    <!--更新列表-->
+    <update id="updateByExampleSelective" parameterType="com.haomostudio.JuniorSpringMVCTemplate.po.UserInfo">
+        update USER_INFO
+        <set>
+            <if test="rowId != null">
+                row_id = #{rowId,jdbcType=VARCHAR},
+            </if>
+            <if test="userCode != null">
+                user_code = #{userCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{lastUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.creationBy != null">
+                creation_by = #{creationBy,jdbcType=VARCHAR},
+            </if>
+            <if test="deletedFlag != null">
+                deleted_flag = #{deletedFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+    </update>
+
+</mapper>
