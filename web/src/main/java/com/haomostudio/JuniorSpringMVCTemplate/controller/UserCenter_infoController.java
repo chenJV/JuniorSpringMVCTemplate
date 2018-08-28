@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -26,7 +27,7 @@ public class UserCenter_infoController {
      *
      * @param parameters
      */
-    @RequestMapping("/getHmUsersUseingGET_1")
+    @RequestMapping(value="/getHmUsersUseingGET_1", method = RequestMethod.GET)
     @ResponseBody
     public void getHmUsersUseingGET_1(@RequestBody Parameters<UserInfo> parameters) {
         UserInfo userInfo = parameters.getEntity(); //获取实体类数据信息
@@ -42,7 +43,7 @@ public class UserCenter_infoController {
      *
      * @param userInfo
      */
-    @RequestMapping("/createHmUsersUseingPOST_1")
+    @RequestMapping(value="/createHmUsersUseingPOST_1", method = RequestMethod.GET)
     public void createHmUsersUseingPOST_1(@RequestBody UserInfo userInfo) {
         try {
             userCenter_infoService.inserUserInfo(userInfo);
@@ -52,12 +53,12 @@ public class UserCenter_infoController {
     }
 
     /**
-     * 第三部： 更新用户
+     * 第三步： 更新用户
      *
      * @param userInfo
      */
-    @RequestMapping("/getHmUsersUseingPUT")
-    public void getHmUsersUseingPUT(UserInfo userInfo) {
+    @RequestMapping(value="/getHmUsersUseingPUT", method = RequestMethod.GET)
+    public void getHmUsersUseingPUT(@RequestBody UserInfo userInfo) {
         try {
             userCenter_infoService.updateUserInfo(userInfo);
         } catch (Exception e) {
