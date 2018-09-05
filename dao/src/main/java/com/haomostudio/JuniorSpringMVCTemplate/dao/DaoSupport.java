@@ -1,11 +1,12 @@
 package com.haomostudio.JuniorSpringMVCTemplate.dao;
 
 import com.haomostudio.JuniorSpringMVCTemplate.po.UserInfo;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.List;
 
-
+@Repository
 public interface DaoSupport {
 
 

@@ -2,7 +2,7 @@ package com.haomostudio.JuniorSpringMVCTemplate.controller;
 
 import com.haomostudio.JuniorSpringMVCTemplate.po.Parameters;
 import com.haomostudio.JuniorSpringMVCTemplate.po.UserInfo;
-import com.haomostudio.JuniorSpringMVCTemplate.servlet.UserCenter_infoService;
+import com.haomostudio.JuniorSpringMVCTemplate.service.UserCenter_infoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +27,7 @@ public class UserCenter_infoController {
      *
      * @param parameters
      */
-    @RequestMapping(value="/getHmUsersUseingGET_1", method = RequestMethod.GET)
+    @RequestMapping(value = "/getHmUsersUseingGET_1", method = RequestMethod.GET)
     @ResponseBody
     public void getHmUsersUseingGET_1(@RequestBody Parameters<UserInfo> parameters) {
         UserInfo userInfo = parameters.getEntity(); //获取实体类数据信息
@@ -43,8 +43,8 @@ public class UserCenter_infoController {
      *
      * @param userInfo
      */
-    @RequestMapping(value="/createHmUsersUseingPOST_1", method = RequestMethod.GET)
-    public void createHmUsersUseingPOST_1(@RequestBody UserInfo userInfo) {
+    @RequestMapping(value = "/createHmUsersUseingPOST_1", method = RequestMethod.GET)
+    public void createHmUsersUseingPOST_1(@RequestBody(required=false) UserInfo userInfo) {
         try {
             userCenter_infoService.inserUserInfo(userInfo);
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class UserCenter_infoController {
      *
      * @param userInfo
      */
-    @RequestMapping(value="/getHmUsersUseingPUT", method = RequestMethod.GET)
+    @RequestMapping(value = "/getHmUsersUseingPUT", method = RequestMethod.GET)
     public void getHmUsersUseingPUT(@RequestBody UserInfo userInfo) {
         try {
             userCenter_infoService.updateUserInfo(userInfo);

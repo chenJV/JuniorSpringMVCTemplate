@@ -1,16 +1,18 @@
-package com.haomostudio.JuniorSpringMVCTemplate.servlet;
+package com.haomostudio.JuniorSpringMVCTemplate.service.impl;
 
 import com.haomostudio.JuniorSpringMVCTemplate.dao.DaoSupport;
 import com.haomostudio.JuniorSpringMVCTemplate.po.UserInfo;
+import com.haomostudio.JuniorSpringMVCTemplate.service.UserCenter_infoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
-@Service("userCenter_infoService")
-public class UserCenter_infoService {
-    @Resource(name = "daoSupport")
+@Service
+public class UserCenter_infoServiceImpl implements UserCenter_infoService {
+    @Autowired
     private DaoSupport dao;
 
     /**
@@ -25,7 +27,8 @@ public class UserCenter_infoService {
      */
     @Transactional
     public int inserUserInfo(UserInfo userInfo) throws Exception {
-        return dao.insert(userInfo);
+       int i = dao.insert(userInfo);
+        return i;
     }
 
     /**
